@@ -2,7 +2,13 @@ import React, { Component } from "react";
 import NewItem from "./NewItem";
 import Items from "./Items";
 import UnpackedAll from "./UnpackedAll";
-import "./App.css";
+import styled from "styled-components";
+
+const Wrapper = styled.div`
+  padding-top: 20px;
+  max-width: 500px;
+  margin: auto;
+`;
 
 const defaultState = [
   { value: "Pants", id: 1545039748385, packed: false },
@@ -51,7 +57,7 @@ class App extends Component {
     const unpacked = this.state.items.filter(item => !item.packed);
     const packed = this.state.items.filter(item => item.packed);
     return (
-      <div className="wrapper">
+      <Wrapper>
         <NewItem add={this.addItem} />
         <Items
           title="Unpacked Item"
@@ -64,7 +70,7 @@ class App extends Component {
           handleCheck={this.handleCheck}
         />
         <UnpackedAll unpackAll={this.unpackAll} />
-      </div>
+      </Wrapper>
     );
   }
 }

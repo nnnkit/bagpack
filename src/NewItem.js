@@ -1,4 +1,28 @@
 import React, { Component } from "react";
+import styled from "styled-components";
+
+const InputSubmit = styled.input`
+  background: rgb(141, 46, 46);
+  color: white;
+  font-size: 16px;
+  padding: 10px 5px;
+  &:focus {
+    outline: none;
+  }
+`;
+
+const InputText = styled.input`
+  border: 2px solid rgb(141, 46, 46);
+  padding: 10px 5px;
+  &:focus {
+    outline: none;
+  }
+`;
+
+const Form = styled.form`
+  display: grid;
+  grid-template-columns: 1fr auto;
+`;
 
 export default class NewItem extends Component {
   state = {
@@ -18,8 +42,8 @@ export default class NewItem extends Component {
   };
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
-        <input
+      <Form onSubmit={this.handleSubmit}>
+        <InputText
           className="add__item"
           type="text"
           name="addItem"
@@ -27,8 +51,8 @@ export default class NewItem extends Component {
           value={this.state.value}
           placeholder="Add New Item"
         />
-        <input className="add__button" type="submit" value="Add Item" />
-      </form>
+        <InputSubmit className="add__button" type="submit" value="Add Item" />
+      </Form>
     );
   }
 }
